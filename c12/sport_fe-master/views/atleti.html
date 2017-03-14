@@ -1,0 +1,41 @@
+<div>
+	<table class="table table-hover table-striped table-bordered">
+		<tr>
+			<td>ID</td>
+			<td>NOME</td>
+			<td>C.F.</td>
+			<td>TELEFONO</td>
+			<td>NATO/A IL</td>
+			<td>SESSO</td>
+			<td>  </td>
+			<td> </td>
+		</tr>
+		<tr ng-repeat="(key, item) in items">
+			<td>{{ item.id }} </td>
+			<td>{{ item.nome }}</td>
+			<td>{{ item.cf }}</td>
+			<td>{{ item.telefono }}</td>
+			<td>{{ item.datanascita | date:"dd/MM/yyyy" }}</td>
+			<td>{{ item.sesso }}</td>
+			<td><input type="button" value="Remove" class="btn btn-danger" data-ng-click="delete(item.id)"/></td>
+			<td>
+			<a href="views/atleta.html" class="btn btn-primary"  data-ng-click="init(item)"> Mostra atleta</a>
+			</td>
+		 </tr>
+	</table>
+	
+	<form action="?p=atleta.php" method="POST">
+	<caption>Nuovo atleta:</caption>
+	<input ng-model="sport.nome" type="text"  placeholder="nome" required />
+	<input ng-model="sport.datanascita" type="date" placeholder="data di nascita"  />
+	
+	<input ng-model="sport.sesso" type="text"  placeholder="sesso"  />
+	<input ng-model="sport.cf" type="text"  placeholder="C.F."  />
+	<input ng-model="sport.telefono" type="text"  placeholder="telefono"  />
+    
+	<button class="btn btn-success" type="submit" ng-click="save(item.id)">Salva</button>
+        <button class="btn btn-info" ng-click="resetItem()">Reset</button>
+    </form>
+</div>
+
+
